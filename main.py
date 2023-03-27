@@ -17,6 +17,11 @@ import undetected_chromedriver as uc
 import time
 if debug_mode:
     import logging
+    import logging.config
+    logging.config.dictConfig({
+        'version': 1,
+        'disable_existing_loggers': True,
+    })
 
 
 # ------------------------------General Setup-------------------------------------
@@ -30,7 +35,7 @@ print(text_to_check)
 
 # Sets up debug mode
 if debug_mode:
-    logging.basicConfig(level=logging.WARNING)
+    logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger(__name__)
 
 
@@ -70,7 +75,7 @@ class element_is_visible(object):
 def wait_until_element_text(element_xpath):
     # Waits until a certain element appears & has text, and then returns that element
     if debug_mode:
-        print(f"Started waiting for {element_xpath}")
+        logger.info(f"Started waiting for {element_xpath}")
     wait.until(EC.presence_of_element_located((By.XPATH, element_xpath)))
     element = driver.find_element(By.XPATH, element_xpath)
     wait.until(EC.visibility_of(element))
@@ -78,7 +83,7 @@ def wait_until_element_text(element_xpath):
     while element.text == "":
         time.sleep(0.5)
     if debug_mode:
-        print(f"Finished Waiting for {element_xpath}")
+        logger.info(f"Finished Waiting for {element_xpath}")
     return element
 
 def use_tool(box_xpath, button_xpath):
@@ -223,5 +228,53 @@ if characters_int < 25000:
 else:
     print("----------------------------------------------------------------------------")
     print("ContentAtScale AI Detector was skipped due to character limit.")
+
+# https://x.writefull.com/gpt-detector
+try:
+    driver.get("https://x.writefull.com/gpt-detector")
+    use_tool('//*[@placeholder="Enter text here."]', '//*[@class="inline-flex justify-center items-center rounded-md text-sm font-semibold py-3 px-4 text-white bg-slate-900 hover:bg-slate-800 text-base font-medium px-4 py-3"]')
+    writefull_result = wait_until_element_text('//*[@class="text-2xl ml-4"]').text
+    if writefull_result == "":
+        results["WriteFull"] = "unavaible"
+        if debug_mode:
+            logger.warning("Writefull Unavaible")
+    else:
+        results["WriteFull"] = writefull_result
+except:
+    results["WriteFull"] = "unavaible/error"
+    if debug_mode:
+        logger.exception("WriteFull Exception")
+print("----------------------------------------------------------------------------")
+print(results)
+
+# https://hivemoderation.com/ai-generated-content-detection
+if characters_int > 750 and characters_int < 8192:
+    try:
+        driver.get("https://hivemoderation.com/ai-generated-content-detection")
+        time.sleep(2)
+        hivemoderation_clear_button = driver.find_element(by=By.XPATH, value='//*[@class="MuiButtonBase-root MuiButton-root jss66 jss396 jss68 jss214 MuiButton-text"]')
+        try:
+            wait.until(EC.element_to_be_clickable(hivemoderation_clear_button))
+        except:
+            pass
+        driver.execute_script("arguments[0].scrollIntoView();", hivemoderation_clear_button)
+        hivemoderation_clear_button.click()
+        use_tool('//*[@class="jss211"]', '//*[@class="MuiButtonBase-root MuiButton-root jss66 jss242 jss69 MuiButton-text"]')
+        hivemoderation_result = wait_until_element_text('//*[@class="MuiTypography-root jss379 MuiTypography-subtitle1"]/span').text
+        if hivemoderation_result == "":
+            results["HiveModeration"] = "unavaible"
+            if debug_mode:
+                logger.warning("HiveModeration Unavaible")
+        else:
+            results["HiveModeration"] = hivemoderation_result
+    except:
+        results["HiveModeration"] = "unavaible/error"
+        if debug_mode:
+            logger.exception("HiveModeration")
+    print("----------------------------------------------------------------------------")
+    print(results)
+else:
+    print("----------------------------------------------------------------------------")
+    print("HiveModeration Text AI-Generated Content Detection tool was skipped due to character limit")
 
 input()

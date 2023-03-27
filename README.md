@@ -70,4 +70,18 @@ https://contentatscale.ai/ai-content-detector/
 Character Limits: 0-25000 Characters      
 Uptime: Unknown     
 Accuracy: Unknown      
-Notes: None     
+Notes: Currently does not work when using headless mode (not debug mode) for unknown reasons     
+     
+### WriteFull GPT-Detector 
+https://x.writefull.com/gpt-detector   
+Character Limits: None    
+Uptime: Unknown     
+Accuracy: Unknown      
+Notes: None  
+
+### HiveModeration Text AI-Generated Content Detection tool
+https://hivemoderation.com/ai-generated-content-detection
+Character Limits: 750-8192 Characters
+Uptime: Unknown     
+Accuracy: Unknown      
+Notes: Currently not functioning as selenium can't find the button  
