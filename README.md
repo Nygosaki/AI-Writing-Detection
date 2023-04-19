@@ -16,7 +16,8 @@ Pip 22.0.1 or later
 ## How to use
 1. Create a file with the name "to check.txt" in the same folder as the python script   
 2. Put the text you want to check into the txt file    
-3. Run the python script in your preffered way (via CMD, IDE, etc)     
+3. Read. and configure the settings of the Python script, located at the complete top of the script
+4. Run the python script in your preffered way (via CMD, IDE, etc)     
 If you want to run the script through CMD, open CMD in the folder. You can also open the CMD normally and navigate to the folder via cd (for example "cd C:\Users\MeLikeFish\Documents\AI-Writing-Detection").     
 Then type in "python main.py".    
       
@@ -42,18 +43,18 @@ https://grammica.com/ai-detector
 Character Limits: None    
 Uptime: Unknown    
 Accuracy: Unknown     
-Notes: We use this to aslo get the ammount of characters, words, and sentences in the provided text.   
+Notes: DO NOT DISABLE. We use this to aslo get the ammount of characters, words, and sentences in the provided text.   
     
 ### AI Writing Check by Quill.org & CommonLit
 https://aiwritingcheck.org/    
 Character Limits: 100-400 words     
 Uptime: Unknown     
 Accuracy: Unknown    
-Notes: None    
+Notes: Slows down program significantly. Adds 10+ seconds of proccesing time.    
       
 ### WRITER AI Content Detector
 https://writer.com/ai-content-detector/    
-Character Limits: 0-1500 Characters    
+Character Limits: <1500 Characters    
 Uptime: Unknown    
 Accuracy: Unknown    
 Notes: None    
@@ -67,10 +68,10 @@ Notes: This is NOT GPTZero that was features on many TV shows. This tool also ad
       
 ### ContentAtScale AI Detector 
 https://contentatscale.ai/ai-content-detector/       
-Character Limits: 0-25000 Characters      
+Character Limits: <25000 Characters      
 Uptime: Unknown     
 Accuracy: Unknown      
-Notes: Currently does not work when using headless mode (not debug mode) for unknown reasons     
+Notes: Currently does not work when using headless mode for unknown reasons     
      
 ### WriteFull GPT-Detector 
 https://x.writefull.com/gpt-detector   
@@ -80,8 +81,15 @@ Accuracy: Unknown
 Notes: None  
 
 ### HiveModeration Text AI-Generated Content Detection tool
-https://hivemoderation.com/ai-generated-content-detection
-Character Limits: 750-8192 Characters
-Uptime: Unknown     
+https://hivemoderation.com/ai-generated-content-detection   
+Character Limits: 750-8192 Characters   
+Uptime: Unknown      
 Accuracy: Unknown      
-Notes: Currently not functioning as selenium can't find the button  
+Notes: Currently not functioning in headless as button not rendered in headless to prevent botting. Randomised class names to prevent botting, no way to select clear button, currently always gets a error.       
+
+### Copyleaks AI Content Detector    
+https://copyleaks.com/ai-content-detector    
+Character Limits: >150 Characters   
+Uptime: Unknown      
+Accuracy: Unknown      
+Notes: Often gets a error as cloudflare is used to prevent botting   
