@@ -14,16 +14,16 @@ Pip 22.0.1 or later
 3. open CMD in the folder, and run "pip install requirements.txt"    
     
 ## How to use
-1. Create a file with the name "to check.txt" in the same folder as the python script   
-2. Put the text you want to check into the txt file    
-3. Read. and configure the settings of the Python script, located at the complete top of the script
-4. Run the python script in your preffered way (via CMD, IDE, etc)     
+1. Create a txt file(s) with text that you want to be checked. If you have multiple of thse files, have them all in the same folder.   
+2. Read. and configure the settings of the Python script, located at the complete top of the script
+3. Run the python script in your preffered way (via CMD, IDE, etc)     
 If you want to run the script through CMD, open CMD in the folder. You can also open the CMD normally and navigate to the folder via cd (for example "cd C:\Users\MeLikeFish\Documents\AI-Writing-Detection").     
 Then type in "python main.py".    
+4. Enter the txt path of the txt file you want to be checked (for example C:\Users\MeLikeFish\Documents\to-check.txt), or the folder with multiple txt files (for example C:\Users\MeLikeFish\Documents\folder-of-txt-files-to-check). There can be no speecial symbols in the path. The path has to be raw unedited from the file explorer, do not add ANY extra characters.
       
 ## Notes
 If you find a bug, or are facing a lot of "Unavaible/Error", before opening a issue, please recreate the bug & enable debug mode (at the start of the script). Then copy the output.    
-If you are getting a lot of "Unavaible", it may be due to a slow internet connection or a slow computer. Highten the number next to "load_time" to increase the ammount of time the program gives each tool. Please note that while this will probably fix this issue, it will also take longer for the script to run.     
+If you are getting a lot of "Unavaible", it may be due to a slow internet connection or a slow computer. Highten the number next to "load_time" to increase the ammount of time the script gives to let the websites load. Please note that while this will probably fix this issue, it will also take longer for the script to run.     
 
 ## Avoiding Detection    
 There are many ways to avoid detection. Some include automated ways; for example first typing     
@@ -78,7 +78,7 @@ https://x.writefull.com/gpt-detector
 Character Limits: None    
 Uptime: Unknown     
 Accuracy: Unknown      
-Notes: None  
+Notes: There is a daily quota for users that are not singed in. It is reccomended to create a account, and add the cookie to Selenium (WIP)  
 
 ### HiveModeration Text AI-Generated Content Detection tool
 https://hivemoderation.com/ai-generated-content-detection   
@@ -93,3 +93,10 @@ Character Limits: >150 Characters
 Uptime: Unknown      
 Accuracy: Unknown      
 Notes: Often gets a error as cloudflare is used to prevent botting   
+
+### Crossplag AI Content Detector   
+https://crossplag.com/ai-content-detector/    
+Character Limits: None   
+Uptime: Unknown      
+Accuracy: Unknown      
+Notes: There is a chance that if your result is 0%, the result didn't acutally generate in time. Has a request limit. You can send x ammount of requests per x minuetes. It is reccomended to create a account, and add the cookie to Selenium (WIP)   
