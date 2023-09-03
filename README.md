@@ -34,7 +34,8 @@ Another way to avoid detection is to ask the AI itself to search on how to avoid
 People can also only use the AI as input, and write the text themselves.     
       
 This is to say that these tools will not detect all text written by AI, and they may also flag content wrongly.      
-In the position of an educator, before making a conclusion, I would invite the student to my office and let them tell me about the text they written, the procces, the subject at hand, and other associated information. If the student can not respond well to your questions, it is likely that they did not write the text themselves.        
+In the position of an educator, before making a conclusion, I would invite the student to my office and let them tell me about the text they written, the procces, the subject at hand, and other associated information. If the student can not respond well to your questions, it is likely that they did not write the text themselves.      
+As AI Writing has gotten so advanced, it has become increidbly harad to detect tools that are made for avoiding these checks. Without interviewing the student, you can also check the document's edit history (On for example google docs) to check for large ammounts of text being pasted in.  
        
 ## List of Supported Tools
 (and their limitations)      

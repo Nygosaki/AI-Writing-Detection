@@ -1,16 +1,16 @@
 # ---------------------------GENERAL CONFIG--------------------------------------
 load_time = 10 # How many seconds does your computer take to load webpages? Increase this if you are getting "unavaible" on most of the tools. YOu can find the exact time by enabling debug mode and timing it with your phone.
 generation_time = 2  # How many seconds to wait for results to generate in tools where we don't have a way of telling when it has finished generating?
-debug_mode = True # Is debug mode enabled?
-headless_mode = False # If enabled, you won't see the browser window. This would allow you to do other things while the text is being proccesed. It breakes some tools (as mentioned in the README)
+debug_mode = False # Is debug mode enabled?
+headless_mode = True # If enabled, you won't see the browser window. This would allow you to do other things while the text is being proccesed. It breakes some tools (as mentioned in the README)
 
 # ------------------------ON/OFF SWITCHES FOR TOOLS-------------------------------
 grammica_enabled = True  # DO NOT DISABLE - Used for character limit measurements. If disabled, will break everything
-writer_enabled = False
-zerogpt_enabled = False
-contentatscale_enabled = False
-writefull_enabled = False
-hivemoderation_enabled = False  # Will get disabled automatically if headless mode is enabled due to not functioning in headless. Implemented anti-botting class randomisation. No way to select the button.
+writer_enabled = True
+zerogpt_enabled = True
+contentatscale_enabled = True
+writefull_enabled = True
+hivemoderation_enabled = True  # Will get disabled automatically if headless mode is enabled due to not functioning in headless. Implemented anti-botting class randomisation. No way to select the button.
 copyleaks_enabled = False  # Implemented anti-botting measures via cloudflare, chance of being able to use it is very low
 studycorgy_enabled = True
 
