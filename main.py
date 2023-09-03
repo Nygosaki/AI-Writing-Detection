@@ -8,11 +8,11 @@ headless_mode = False # If enabled, you won't see the browser window. This would
 grammica_enabled = True  # DO NOT DISABLE - Used for character limit measurements. If disabled, will break everything
 writer_enabled = True
 zerogpt_enabled = False
-contentatscale_enabled = True  # Will get disabled automatically if headless mode is enabled due to not functioning in headless.
+contentatscale_enabled = False  # Will get disabled automatically if headless mode is enabled due to not functioning in headless.
 writefull_enabled = False
 hivemoderation_enabled = True  # Will get disabled automatically if headless mode is enabled due to not functioning in headless. Implemented anti-botting class randomisation. No way to select the button.
-copyleaks_enabled = True  # Implemented anti-botting measures via cloudflare, chance of being able to use it is very low
-crossplag_enabled = True  # Slows down program significantly. Has a request limit. You can send x ammount of requests per x minuetes.
+copyleaks_enabled = False  # Implemented anti-botting measures via cloudflare, chance of being able to use it is very low
+crossplag_enabled = False  # Slows down program significantly. Has a request limit. You can send x ammount of requests per x minuetes.
 
 # ---------------------DO NOT CHANGE ANYTHING BELLOW HERE-------------------------
 # --------------------------------------------------------------------------------
@@ -231,10 +231,11 @@ for i in files_to_check:
                     logger.warning("Could not use Selenium Click ContentAtScale")
                     driver.execute_script('arguments[0].click();', driver.find_element(by=By.XPATH, value='//*[@class="site-btn-secondry-lg check-ai-score"]'))
                     pass
-                contentatscale_result_ai_written = wait_until_element_text('//*[@id="progress"]').text
-                if contentatscale_result_ai_written == "":
+                contentatscale_result_ai_written_percentage = wait_until_element_text('//*[@id="progress"]').text
+                if contentatscale_result_ai_written_percentage == "":
                     results[f"{i}"]["ContentAtScale AI Detector"] = "unavaible"
                 else:
+                    contentatscale_result_ai_written = int(contentatscale_result_ai_written_percentage.replace("%", ""))
                     contentatscale_result = human_to_ai_percentage(contentatscale_result_ai_written)
                     results[f"{i}"]["ContentAtScale AI Detector"] = f"{contentatscale_result}% probability of AI written"
             except:
@@ -278,15 +279,15 @@ for i in files_to_check:
             try:
                 driver.get("https://hivemoderation.com/ai-generated-content-detection")
                 time.sleep(2)
-                hivemoderation_clear_button = driver.find_element(by=By.XPATH, value='//*[@class="MuiButtonBase-root MuiButton-root jss66 jss396 jss68 jss214 MuiButton-text"]')
+                hivemoderation_clear_button = driver.find_element(by=By.XPATH, value='//span[@class="MuiButton-label"][text()="Clear"]/parent::*')
                 try:
                     wait.until(EC.element_to_be_clickable(hivemoderation_clear_button))
                 except:
                     pass
                 driver.execute_script("arguments[0].scrollIntoView();", hivemoderation_clear_button)
                 hivemoderation_clear_button.click()
-                use_tool('//*[@class="jss211"]', '//*[@class="MuiButtonBase-root MuiButton-root jss66 jss242 jss69 MuiButton-text"]')
-                hivemoderation_result = wait_until_element_text('//*[@class="MuiTypography-root jss379 MuiTypography-subtitle1"]/span').text
+                use_tool('//*[@class="jss211"]/div/textarea', '//span[@class="MuiButton-label"][text()="Submit"]/parent::*')
+                hivemoderation_result = wait_until_element_text('//*[@class="jss464"]/span').text
                 if hivemoderation_result == "":
                     results[f"{i}"]["HiveModeration"] = "unavaible"
                     if debug_mode:
