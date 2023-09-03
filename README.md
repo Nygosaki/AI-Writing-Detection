@@ -11,7 +11,8 @@ Pip 22.0.1 or later
 ## How to install
 1. Download the zip file of this entire project    
 2. Extract the zip file    
-3. open CMD in the folder, and run "pip install requirements.txt"    
+3. open CMD in the folder, and run "pip install -r requirements.txt"    
+4. Install Chrome v.114 (https://www.filepuma.com/download/google_chrome_64bit_114.0.5735.199-35569/)    
     
 ## How to use
 1. Create a txt file(s) with text that you want to be checked. If you have multiple of thse files, have them all in the same folder.   
@@ -46,6 +47,7 @@ Accuracy: Unknown
 Notes: DO NOT DISABLE. We use this to aslo get the ammount of characters, words, and sentences in the provided text.   
     
 ### AI Writing Check by Quill.org & CommonLit
+***The tool has been taken down due to advancments in AI text generation***
 https://aiwritingcheck.org/    
 Character Limits: 100-400 words     
 Uptime: Unknown     

@@ -6,13 +6,12 @@ headless_mode = False # If enabled, you won't see the browser window. This would
 
 # ------------------------ON/OFF SWITCHES FOR TOOLS-------------------------------
 grammica_enabled = True  # DO NOT DISABLE - Used for character limit measurements. If disabled, will break everything
-aiwritingcheck_enabled = True  # Slows down program significantly.
 writer_enabled = True
-zerogpt_enabled = True
+zerogpt_enabled = False
 contentatscale_enabled = True  # Will get disabled automatically if headless mode is enabled due to not functioning in headless.
-writefull_enabled = True
-hivemoderation_enabled = False  # Will get disabled automatically if headless mode is enabled due to not functioning in headless. Implemented anti-botting class randomisation. No way to select the button.
-copyleaks_enabled = False  # Implemented anti-botting measures via cloudflare, chance of being able to use it is very low
+writefull_enabled = False
+hivemoderation_enabled = True  # Will get disabled automatically if headless mode is enabled due to not functioning in headless. Implemented anti-botting class randomisation. No way to select the button.
+copyleaks_enabled = True  # Implemented anti-botting measures via cloudflare, chance of being able to use it is very low
 crossplag_enabled = True  # Slows down program significantly. Has a request limit. You can send x ammount of requests per x minuetes.
 
 # ---------------------DO NOT CHANGE ANYTHING BELLOW HERE-------------------------
@@ -170,36 +169,6 @@ for i in files_to_check:
             logger.exception("Word Counter Exception")
     print("----------------------------------------------------------------------------")
     print(results[f"{i}"])
-
-
-    # https://aiwritingcheck.org/
-    if aiwritingcheck_enabled:
-        if words_int > 100 and words_int < 400:
-            try:
-                driver.get("https://aiwritingcheck.org/")
-                use_tool('//*[@id="js-textBox"]', '//*[@id="js-submitButton"]')
-                time.sleep(generation_time)
-                if driver.find_element(by=By.XPATH, value='//*[@id="js-human"]/h3/div/b').is_displayed():
-                    results[f"{i}"]["AI Writing Check"] = "Written by Human"
-                elif driver.find_element(by=By.XPATH, value='//*[@id="js-ai"]/h3/div/b').is_displayed():
-                    results[f"{i}"]["AI Writing Check"] = "Written by AI"
-                else:
-                    results[f"{i}"]["AI Writing Check"] = "unavaible"
-                    if debug_mode:
-                        logger.warning("AI Writing Check Unavaible")
-            except:
-                results[f"{i}"]["AI Writing Check"] = "unavaible/error"
-                if debug_mode:
-                    logger.exception("AI Writing Check Exception")
-            print("----------------------------------------------------------------------------")
-            print(results[f"{i}"])
-        else:
-            print("----------------------------------------------------------------------------")
-            print("AI Writing Check by Quill.org & CommonLit was skipped due to character limits.")
-    else:
-        print("----------------------------------------------------------------------------")
-        print("AI Writing Check by Quill.org & CommonLit has been disabled.")
-
 
     # https://writer.com/ai-content-detector/
     if writer_enabled:
