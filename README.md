@@ -95,10 +95,3 @@ Character Limits: >150 Characters
 Uptime: Unknown      
 Accuracy: Unknown      
 Notes: Often gets a error as cloudflare is used to prevent botting   
-
-### Crossplag AI Content Detector   
-https://crossplag.com/ai-content-detector/    
-Character Limits: None   
-Uptime: Unknown      
-Accuracy: Unknown      
-Notes: There is a chance that if your result is 0%, the result didn't acutally generate in time. Has a request limit. You can send x ammount of requests per x minuetes. It is reccomended to create a account, and add the cookie to Selenium (WIP)   

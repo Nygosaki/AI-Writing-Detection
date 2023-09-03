@@ -10,9 +10,8 @@ writer_enabled = True
 zerogpt_enabled = False
 contentatscale_enabled = False  # Will get disabled automatically if headless mode is enabled due to not functioning in headless.
 writefull_enabled = False
-hivemoderation_enabled = True  # Will get disabled automatically if headless mode is enabled due to not functioning in headless. Implemented anti-botting class randomisation. No way to select the button.
+hivemoderation_enabled = False  # Will get disabled automatically if headless mode is enabled due to not functioning in headless. Implemented anti-botting class randomisation. No way to select the button.
 copyleaks_enabled = False  # Implemented anti-botting measures via cloudflare, chance of being able to use it is very low
-crossplag_enabled = False  # Slows down program significantly. Has a request limit. You can send x ammount of requests per x minuetes.
 
 # ---------------------DO NOT CHANGE ANYTHING BELLOW HERE-------------------------
 # --------------------------------------------------------------------------------
@@ -339,29 +338,6 @@ for i in files_to_check:
     else:
         print("----------------------------------------------------------------------------")
         print("Copyleaks AI Content Detector has been disabled.")
-
-    # https://crossplag.com/ai-content-detector/
-    if crossplag_enabled:
-        try:
-            driver.get("https://crossplag.com/ai-content-detector/")
-            use_tool('//*[@placeholder="Paste or write some text here"]', '//*[@id="checkButtonAIGen"]')
-            time.sleep(generation_time)
-            crossplag_result = driver.find_element(by=By.XPATH, value='//*[@class="pointer"]/span').text
-            if crossplag_result == "":
-                results[f"{i}"]["Crossplag"] = "unavaible"
-                if debug_mode:
-                    logger.warning("Crossplag Unavaible")
-            else:
-                results[f"{i}"]["Crossplag"] = f"{crossplag_result} probability of AI written"
-        except:
-            results[f"{i}"]["Crossplag"] = "unavaible/error"
-            if debug_mode:
-                logger.exception("Crossplag Exception")
-        print("----------------------------------------------------------------------------")
-        print(results[f"{i}"])
-    else:
-        print("----------------------------------------------------------------------------")
-        print("Crossplag AI Content Detector has been disabled.")
 
 print("")
 print("")
