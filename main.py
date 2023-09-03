@@ -1,6 +1,6 @@
 # ---------------------------GENERAL CONFIG--------------------------------------
 load_time = 10 # How many seconds does your computer take to load webpages? Increase this if you are getting "unavaible" on most of the tools. YOu can find the exact time by enabling debug mode and timing it with your phone.
-generation_time = 10  # How many seconds to wait for results to generate in tools where we don't have a way of telling when it has finished generating?
+generation_time = 2  # How many seconds to wait for results to generate in tools where we don't have a way of telling when it has finished generating?
 debug_mode = True # Is debug mode enabled?
 headless_mode = False # If enabled, you won't see the browser window. This would allow you to do other things while the text is being proccesed. It breakes some tools (as mentioned in the README)
 
@@ -279,21 +279,24 @@ for i in files_to_check:
             try:
                 driver.get("https://hivemoderation.com/ai-generated-content-detection")
                 time.sleep(2)
-                hivemoderation_clear_button = driver.find_element(by=By.XPATH, value='//span[@class="MuiButton-label"][text()="Clear"]/parent::*')
+                hivemoderation_clear_button = driver.find_element(by=By.XPATH, value="//*[text()='Clear']/parent::*")
                 try:
                     wait.until(EC.element_to_be_clickable(hivemoderation_clear_button))
                 except:
                     pass
-                driver.execute_script("arguments[0].scrollIntoView();", hivemoderation_clear_button)
+                hivemoderation_clear_button_y = hivemoderation_clear_button.location['y']
+                driver.execute_script(f"window.scrollTo(0, {hivemoderation_clear_button_y - 500});")
+                time.sleep(1)
                 hivemoderation_clear_button.click()
-                use_tool('//*[@class="jss211"]/div/textarea', '//span[@class="MuiButton-label"][text()="Submit"]/parent::*')
-                hivemoderation_result = wait_until_element_text('//*[@class="jss464"]/span').text
+                use_tool('//*[@class="jss211"]/div/textarea', "//*[text()='Submit']/parent::*")
+                time.sleep(generation_time)
+                hivemoderation_result =  driver.find_element(by=By.XPATH, value="//span[contains(text(), '%')]").text
                 if hivemoderation_result == "":
                     results[f"{i}"]["HiveModeration"] = "unavaible"
                     if debug_mode:
                         logger.warning("HiveModeration Unavaible")
                 else:
-                    results[f"{i}"]["HiveModeration"] = hivemoderation_result
+                    results[f"{i}"]["HiveModeration"] = f"{hivemoderation_result} probability of AI Written"
             except:
                 results[f"{i}"]["HiveModeration"] = "unavaible/error"
                 if debug_mode:
