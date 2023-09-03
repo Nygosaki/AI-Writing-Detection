@@ -47,7 +47,7 @@ Accuracy: Unknown
 Notes: DO NOT DISABLE. We use this to aslo get the ammount of characters, words, and sentences in the provided text.   
     
 ### AI Writing Check by Quill.org & CommonLit
-***The tool has been taken down due to advancments in AI text generation***
+***The tool has been taken down due to advancments in AI text generation***     
 https://aiwritingcheck.org/    
 Character Limits: 100-400 words     
 Uptime: Unknown     
