@@ -73,7 +73,7 @@ https://contentatscale.ai/ai-content-detector/
 Character Limits: <25000 Characters      
 Uptime: Unknown     
 Accuracy: Unknown      
-Notes: Currently does not work when using headless mode for unknown reasons     
+Notes: None   
      
 ### WriteFull GPT-Detector 
 https://x.writefull.com/gpt-detector   
@@ -87,7 +87,7 @@ https://hivemoderation.com/ai-generated-content-detection
 Character Limits: 750-8192 Characters   
 Uptime: Unknown      
 Accuracy: Unknown      
-Notes: Currently not functioning in headless as button not rendered in headless to prevent botting. Randomised class names to prevent botting, no way to select clear button, currently always gets a error.       
+Notes: Currently not functioning in headless as button not rendered in headless to prevent botting.       
 
 ### Copyleaks AI Content Detector    
 https://copyleaks.com/ai-content-detector    
@@ -95,3 +95,10 @@ Character Limits: >150 Characters
 Uptime: Unknown      
 Accuracy: Unknown      
 Notes: Often gets a error as cloudflare is used to prevent botting   
+
+### StudyCorgi Chat GPT Detector for Essays     
+https://studycorgi.com/free-writing-tools/chat-gpt-detector/     
+Character Limits: <4500 Characters   
+Uptime: Unknown      
+Accuracy: Unknown      
+Notes: None 
