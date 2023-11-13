@@ -5,7 +5,7 @@ Please note that this is not finished yet.
     
 ## Requirements
 Python 3.11.2 or later     
-Chrome 111.1 or later     
+Chrome 114  
 Pip 22.0.1 or later     
      
 ## How to install
