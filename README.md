@@ -1,8 +1,8 @@
 # AI-Writing-Detection
 This tool will parse the inputted text into many different existing AI writing detection tools and return the results to you. This is to be able to scan text with as many tools as possible without having to do it manually.   
     
-Please note that this is not finished yet.   
-    
+## I AM CURRENTLY REWRITING THE SCRIPT, UNTIL REWRITING IS DONE, MAINTENANCE IS PAUSED
+
 ## Requirements
 Python 3.11.2 or later     
 Chrome 114  
