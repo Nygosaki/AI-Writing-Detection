@@ -24,7 +24,6 @@ If you want to run the script through CMD, open CMD in the folder. You can also 
 Then type in "python start.py".  
 4. Enter the txt path of the txt file you want to be checked (for example C:\Users\MeLikeFish\Documents\to-check.txt), or the folder with multiple txt files (for example C:\Users\MeLikeFish\Documents\folder-of-txt-files-to-check). There can be no speecial symbols in the path. The path has to be raw unedited from the file explorer, do not add ANY extra characters.
   
-
 ## Avoiding Detection  
 
 There are many ways to avoid detection. Some include automated ways; for example first typing  

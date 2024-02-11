@@ -1,2 +1,3 @@
 selenium>=4.9.0
 undetected_chromedriver==3.5.4
+packaging>=23.1

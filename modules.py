@@ -20,7 +20,7 @@ class Modules:
         self.logger = logging.getLogger(__name__)
         self.Wait = WebDriverWait(driver, 30)
 
-    def dataMatchColourPercentage(self, element):
+    def dataMatchColourPercentage(self, element) -> str:
         match element.value_of_css_property("Color"):
             case "rgb(0, 207, 131)":
                 return "Human"
@@ -28,7 +28,7 @@ class Modules:
                 return "Unsure"
             case "rgb(255, 0, 0)":
                 return "AI"
-    def dataPercentageToWord(self, percentage):
+    def dataPercentageToWord(self, percentage) -> str:
         try:
             percentage = int(float(percentage))
         except:
@@ -40,7 +40,7 @@ class Modules:
         else:
             return "Unsure"
 
-    def dataHumanToAI(self, human_percentage):
+    def dataHumanToAI(self, human_percentage) -> int:
         try:
             human_percentage = int(float(human_percentage))
         except:
@@ -48,7 +48,7 @@ class Modules:
         ai_percentage = 100 - int(float(human_percentage))
         return ai_percentage
 
-    def doGetPath(self):
+    def doGetPath(self) -> list[str]:
         check_path = input("Please provide the path of the .txt file, or a folder containing txt files that you would like to check\n")
         if os.path.exists(check_path) == False:
             print("The path you provided does not exist")
@@ -69,11 +69,20 @@ class Modules:
         element.parentNode.removeChild(element);
         """, element)
     
-    def doWaitUntilText(self, xpath: str):
-        # Waits until a certain element appears & has text, and then returns that element
+    def doWaitUntilText(self, xpath: str) -> uc.webelement.WebElement:
         self.Wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
         element = self.driver.find_element(By.XPATH, xpath)
         self.Wait.until(EC.visibility_of(element))
         while element.text == "":
             time.sleep(0.5)
         return element
+    
+    def doScrollToElement(self, element: uc.webelement.WebElement):
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        scroll_element_into_middle = """
+        var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        var elementTop = arguments[0].getBoundingClientRect().top;
+        window.scrollBy(0, elementTop-(viewPortHeight/2));
+        """
+        self.driver.execute_script(scroll_element_into_middle, element)
+        time.sleep(0.5)

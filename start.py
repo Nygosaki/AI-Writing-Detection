@@ -12,6 +12,7 @@ import sys
 from modules import Modules
 from browse import Browse
 from setup import Options
+import getChromeVer
 
 Options = Options()
 logging.config.dictConfig({
@@ -23,7 +24,10 @@ logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
     logger.info("Starting the program")
-    driver = uc.Chrome(Options=Options.chromeOptions)
+    if Options.headless_mode:
+        driver = uc.Chrome(Options=Options.chromeOptions, headless=True, version_main=int(getChromeVer.get_chrome_version().split(".")[0]))
+    else: 
+        driver = uc.Chrome(Options=Options.chromeOptions)
 
     Modules = Modules(driver)
 
@@ -39,6 +43,9 @@ if __name__ == "__main__":
 
         Browse.doUndetectableAI()
         Browse.doGrammica()
+        Browse.doWritefull()
+        Browse.doHive()
+        Browse.doScribbr()
         Options.results[f"{fileCur}"] = Browse.Options.results
     print(Options.results)
     driver.quit()
