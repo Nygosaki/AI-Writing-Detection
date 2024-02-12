@@ -5,9 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 import logging
 import logging.config
 import time
-import os
-import glob
-import sys
 
 from modules import Modules
 from browse import Browse

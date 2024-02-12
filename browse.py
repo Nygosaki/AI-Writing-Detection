@@ -7,9 +7,6 @@ from selenium.webdriver import ActionChains
 import logging
 import logging.config
 import time
-import os
-import glob
-import sys
 from modules import Modules
 from setup import Options
 

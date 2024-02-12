@@ -7,7 +7,6 @@ import logging.config
 import time
 import os
 import glob
-import sys
 
 class Modules:
     def __init__(self, driver) -> None:
