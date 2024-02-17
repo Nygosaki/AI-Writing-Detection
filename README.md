@@ -19,11 +19,10 @@ Pip 22.0.1 or later
 
 1. Create a txt file(s) with text that you want to be checked. If you have multiple of thse files, have them all in the same folder.  
 2. You can configure the script in setup.py
-3. Run the `start.py` python script in your preffered way (via CMD, IDE, etc)  
+3. Run the `guiStart.py` python script in your preffered way (via CMD, IDE, etc)  
 If you want to run the script through CMD, open CMD in the folder. You can also open the CMD normally and navigate to the folder via cd (for example "cd C:\Users\MeLikeFish\Documents\AI-Writing-Detection").  
-Then type in "python start.py".  
-4. Enter the txt path of the txt file you want to be checked (for example C:\Users\MeLikeFish\Documents\to-check.txt), or the folder with multiple txt files (for example C:\Users\MeLikeFish\Documents\folder-of-txt-files-to-check). There can be no speecial symbols in the path. The path has to be raw unedited from the file explorer, do not add ANY extra characters.
-  
+Then type in "python guiStart.py".  
+
 ## Avoiding Detection  
 
 There are many ways to avoid detection. Some include automated ways; for example first typing  

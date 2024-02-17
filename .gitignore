@@ -135,3 +135,5 @@ cython_debug/
 *.pyc
 test.py
 untracked/
+temp.txt
+options.json

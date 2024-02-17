@@ -16,6 +16,7 @@ class Browse:
         self.textUnckecked = textUnckecked
         self.fileCur = fileCur
         self.Options = Options()
+        self.Options.loadCachedOptions()
         self.Modules = Modules(driver)
         self.Wait = WebDriverWait(driver, 30)
 

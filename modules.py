@@ -7,9 +7,11 @@ import logging.config
 import time
 import os
 import glob
+import requests
+import re
 
 class Modules:
-    def __init__(self, driver) -> None:
+    def __init__(self, driver=False) -> None:
         self.driver = driver
         logging.config.dictConfig({
             'version': 1,
@@ -85,3 +87,20 @@ class Modules:
         """
         self.driver.execute_script(scroll_element_into_middle, element)
         time.sleep(0.5)
+
+    def doGetLatestVersion(self):
+        url = f"https://api.github.com/repos/Nygosaki/AI-Writing-Detection/commits"
+        response = requests.get(url)
+        response.raise_for_status()  # Raise exception if invalid response
+        commits = response.json()
+
+        if commits:
+            latest_commit = commits[0]
+            message = latest_commit['commit']['message']
+
+            # Search for version string in commit message
+            match = re.search(r"Version: (\d+\.\d+\.\d+)", message)
+            if match:
+                return match.group(1)
+
+        return None
