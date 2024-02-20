@@ -94,6 +94,13 @@ class Start:
                 QCoreApplication.processEvents()
             except Exception as e:
                 print(f"An error occurred while processing Scribbr: {e}")
+
+            try:
+                browse.doTypeset()
+                self.parent.ui.set_indicator_color(self.parent.ui.indicatorTypeset, browse.Options.results["Typeset"])
+                QCoreApplication.processEvents()
+            except Exception as e:
+                print(f"An error occurred while processing Typeset: {e}")
             
             self.options.results[f"{fileCur}"] = browse.Options.results
         print(self.options.results)

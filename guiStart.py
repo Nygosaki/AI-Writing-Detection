@@ -25,7 +25,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.radioButtonWritefull.setChecked(options.toggleWritefull)
         self.ui.radioButtonHive.setChecked(options.toggleHive)
         self.ui.radioButtonScribbr.setChecked(options.toggleScribbr)
-        self.ui.radioButtonSmodin.setChecked(options.toggleSmodin)
+        self.ui.radioButtonTypeset.setChecked(options.toggleTypeset)
     
     def open_file_dialog(self):
         fileName, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "", "All Files (*);;PDF Files (*.pdf);;Text Files (*.txt)")
@@ -59,7 +59,7 @@ class MainWindow(QtWidgets.QMainWindow):
             checkingFiles = ["temp.txt"]
 
         self.buttonStates = []
-        for x in [self.ui.radioButtonGptZero, self.ui.radioButtonGrammica, self.ui.radioButtonWritefull, self.ui.radioButtonHive, self.ui.radioButtonScribbr, self.ui.radioButtonSmodin]:
+        for x in [self.ui.radioButtonGptZero, self.ui.radioButtonGrammica, self.ui.radioButtonWritefull, self.ui.radioButtonHive, self.ui.radioButtonScribbr, self.ui.radioButtonTypeset]:
             self.buttonStates.append(x.isChecked())
         start = Start(self)
         start.begin(checkingFiles)

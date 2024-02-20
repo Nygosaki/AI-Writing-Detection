@@ -10,18 +10,18 @@ class Options:
         self.toggleWritefull = True
         self.toggleHive = True
         self.toggleScribbr = True
-        self.toggleSmodin = True
+        self.toggleTypeset = True
 
         self.flagFinishedUndetectableAI = False
         self.flagFinishedGrammica = False
         self.flagFinishedWritefull = False
         self.flagFinishedHive = False
         self.flagFinishedScribbr = False
-        self.flagFinishedSmodin = False
+        self.flagFinishedTypeset = False
 
         self.results = dict()
 
-        self.version = "1.3.0"
+        self.version = "1.4.0"
 
         self.chromeOptions = uc.ChromeOptions()
         self.chromeOptions.add_argument('--ignore-ssl-errors=yes')
@@ -38,7 +38,7 @@ class Options:
         self.toggleWritefull = states[2]
         self.toggleHive = states[3]
         self.toggleScribbr = states[4]
-        self.toggleSmodin = states[5]
+        self.toggleTypeset = states[5]
     
     def loadCachedOptions(self) -> None:
         try:
@@ -49,7 +49,7 @@ class Options:
                 self.toggleWritefull = toggle_values.get('toggleWritefull', self.toggleWritefull)
                 self.toggleHive = toggle_values.get('toggleHive', self.toggleHive)
                 self.toggleScribbr = toggle_values.get('toggleScribbr', self.toggleScribbr)
-                self.toggleSmodin = toggle_values.get('toggleSmodin', self.toggleSmodin)
+                self.toggleTypeset = toggle_values.get('toggleTypeset', self.toggleTypeset)
         except FileNotFoundError:
             pass  # File does not exist yet, so we'll just use the default values
 
@@ -60,7 +60,7 @@ class Options:
             'toggleWritefull': self.toggleWritefull,
             'toggleHive': self.toggleHive,
             'toggleScribbr': self.toggleScribbr,
-            'toggleSmodin': self.toggleSmodin,
+            'toggleTypeset': self.toggleTypeset,
         }
         with open('options.json', 'w') as f:
             json.dump(toggle_values, f)

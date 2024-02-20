@@ -107,12 +107,12 @@ class Ui_Form(object):
         self.indicatorScribbr.setPixmap(pixmap)
         layout.addWidget(self.indicatorScribbr, 11, 3)
 
-        self.radioButtonSmodin = QtWidgets.QCheckBox(parent=Form)
-        layout.addWidget(self.radioButtonSmodin, 12, 4)  # Add widget to layout
+        self.radioButtonTypeset = QtWidgets.QCheckBox(parent=Form)
+        layout.addWidget(self.radioButtonTypeset, 12, 4)  # Add widget to layout
 
-        self.indicatorSmodin = QtWidgets.QLabel(parent=Form)
-        self.indicatorSmodin.setPixmap(pixmap)
-        layout.addWidget(self.indicatorSmodin, 12, 3)
+        self.indicatorTypeset = QtWidgets.QLabel(parent=Form)
+        self.indicatorTypeset.setPixmap(pixmap)
+        layout.addWidget(self.indicatorTypeset, 12, 3)
 
         self.pushButtonCheck = QtWidgets.QPushButton(parent=Form)
         layout.addWidget(self.pushButtonCheck, 13, 4)  # Add widget to layout
@@ -144,7 +144,7 @@ class Ui_Form(object):
         self.radioButtonWritefull.setText(_translate("Form", "Writefull"))
         self.radioButtonHive.setText(_translate("Form", "Hive"))
         self.radioButtonScribbr.setText(_translate("Form", "Scribbr"))
-        self.radioButtonSmodin.setText(_translate("Form", "Smodin"))
+        self.radioButtonTypeset.setText(_translate("Form", "Typeset"))
         self.pushButtonCheck.setText(_translate("Form", "Check"))
         self.pushButtonFile.setText(_translate("Form", "Chose a file instead"))
         self.pushButtonFolder.setText(_translate("Form", "Chose a folder instead"))

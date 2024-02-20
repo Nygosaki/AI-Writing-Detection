@@ -165,3 +165,32 @@ class Browse:
             self.logger.debug(error)
         finally:
             self.Options.flagFinishedScribbr = True
+
+    def doTypeset(self):
+        try:
+            self.logger.info("Checking Typeset")
+            if not self.Options.toggleTypeset:
+                self.logger.info("Skipping Typeset")
+                return
+            self.driver.get("https://typeset.io/ai-detector")
+            time.sleep(1)
+            self.Wait.until(EC.presence_of_element_located((By.XPATH, '//button[@value="NON_SCIENTIFIC"]')))
+            buttonNonScientific = self.driver.find_element(By.XPATH, '//button[@value="NON_SCIENTIFIC"]')
+            buttonNonScientific.click()
+            textbox = self.driver.find_element(By.XPATH, '//*[@aria-label="Rich Text Editor. Editing area: textEditor"]')
+            textbox.send_keys(self.textUnckecked)
+            time.sleep(1)
+            button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Analyse")][1]')
+            try:
+                button.click()
+            except:
+                self.driver.execute_script("arguments[0].click()", button)
+            time.sleep(1)
+            percentageAI = self.Modules.doWaitUntilText('//h3[@class="my-2 text-2xl font-semibold"]').text
+            time.sleep(1)
+            self.Options.results["Typeset"] = self.Modules.dataPercentageToWord(self.driver.find_element(By.XPATH, '//h3[@class="my-2 text-2xl font-semibold"]').text)
+        except Exception as error:
+            self.logger.exception(f"Error of type {type(error)} occurred while checking Typeset")
+            self.logger.debug(error)
+        finally:
+            self.Options.flagFinishedTypeset = True
